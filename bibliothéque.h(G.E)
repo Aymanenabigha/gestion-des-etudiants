@@ -1,0 +1,409 @@
+#ifndef MINI_PROJET_H_INCLUDED
+#define MINI_PROJET_H_INCLUDED
+
+
+typedef struct
+{
+    char nom[30],prenom[30];
+    int jour,mois,annee;
+    int h;
+    float notes[30],moyenne;
+    long mat;
+}info;
+
+
+void saisir(info p[],int i)
+{
+int j;
+float s=0;
+    printf("  \n   Les informations de %ctudiant %d \n",144,i+1);
+    printf("  \n Nom    :");fflush(stdin);gets(p[i].nom);
+    printf("  \n Prenom :");fflush(stdin);gets(p[i].prenom);
+    printf("  \n Matricule :");scanf("%ld",&p[i].mat);
+    printf("  \n Date de naissance : ") ;
+    printf("\n     jour :");scanf("%d",&p[i].jour);
+    printf("\n     mois :");scanf("%d",&p[i].mois);
+    printf("\n     annee :");scanf("%d",&p[i].annee);
+    printf("  \n Entrer nombre de note :");scanf("%d",&p[i].h);
+    printf("  \n Les notes est:");
+       for(j=0;j<p[i].h;j++)
+       {
+              printf("  \n    Notes %d :",j+1);scanf("%f",&p[i].notes[j]);
+              s=s+p[i].notes[j];
+       }
+    p[i].moyenne=s/(p[i].h);
+}
+void afficher1(info p[],int x)
+{
+int i,j;
+    for(i=0;i<x;i++)
+    {
+            printf("       \n  %ctudiant: %d\n",144,i+1);
+            printf("  \n Nom    : %s",p[i].nom);
+            printf("  \n Prenom : %s",p[i].prenom);
+            printf("  \n Matricule : %ld",p[i].mat);
+            printf("  \n Date de naissance :   ") ;
+            printf("   \n    jour :%d",p[i].jour);
+            printf("   \n    mois :%d",p[i].mois);
+            printf("   \n    annee:%d",p[i].annee);
+            printf("  \n Les notes est:");
+            for(j=0;j<p[i].h;j++)
+            {
+              printf("  \n    Notes %d : %.2f",j+1,p[i].notes[j]);
+            }
+            printf("\n\n\n");
+        }
+}
+
+void afficher2(info p[],int x)
+{int i,k=1,j;
+    for(i=0;i<x;i++)
+    {   if(p[i].moyenne>=10)
+        {   printf("       \n  %ctudiant: %d\n",144,k);
+            printf("  \n Nom    : %s",p[i].nom);
+            printf("  \n Prenom : %s",p[i].prenom);
+            printf("  \n Matricule : %ld",p[i].mat);
+            printf("  \n Date de naissance :   ") ;
+            printf("   \n    jour :%d",p[i].jour);
+            printf("   \n    mois :%d",p[i].mois);
+            printf("   \n    annee:%d",p[i].annee);
+            printf("  \n Les notes est:");
+            for(j=0;j<p[i].h;j++)
+            {
+               printf("   \n    Notes %d : %.2f",j+1,p[i].notes[j]);
+            }
+            printf("\n\n\n");
+            k++;
+        }
+    }
+    if(k==1)printf("\n personne n'eu une moyenne generale superieur a 10");
+}
+
+ void recherche2(info p[],int x)
+{int i,k=1,j;
+long u;
+    printf("\nentrer le MATRICULE :");scanf("%d",&u);
+    for(i=0;i<x;i++)
+      {if(p[i].mat==u)
+        {
+            printf("       \n  %ctudiant c'est: \n",144);
+            printf("  \n Nom    : %s",p[i].nom);
+            printf("  \n Prenom : %s",p[i].prenom);
+            printf("  \n Matricule : %ld",p[i].mat);
+            printf("  \n Date de naissance :   ") ;
+            printf("   \n    jour :%d",p[i].jour);
+            printf("   \n    mois :%d",p[i].mois);
+            printf("   \n    annee:%d",p[i].annee);
+            printf("  \n Les notes est:");
+            for(j=0;j<p[i].h;j++)
+            {
+              printf("   \n     Notes %d : %.2f",j+1,p[i].notes[j]);
+            }
+            printf("\n\n\n");
+            k++;
+        }
+      }
+    if(k==1)
+      printf("\n ce matrucule n'est pas disponible ");
+}
+
+ void moyenne2(info p[],int x)
+{int i,k=1;
+long u;
+    printf("\nentrer le MATRICULE :");scanf("%d",&u);
+    for(i=0;i<x;i++)
+      {if(p[i].mat==u)
+        {   printf("       \n  %ctudiant c'est: \n",144);
+            printf("  \n Nom    : %s",p[i].nom);
+            printf("  \n Prenom : %s",p[i].prenom);
+            printf("  \n La moyenne g%cn%crale : %.2f",130,130,p[i].moyenne);
+            printf("\n");
+            k++;
+        }
+      }
+    if(k==1)
+      printf("\n ce matrucule n'est pas disponible ");
+}
+
+ void recherche1(info p[],int x)
+{int j,k=1,i;
+char  u[30];
+    printf("\nentrer le Nom :");fflush(stdin);gets(u);
+    for(j=0;j<x;j++)
+      {if(stricmp(p[j].nom,u)==0)
+        {
+            printf("       \n  %ctudiant c'est: \n",144);
+            printf("  \n Nom    : %s",p[j].nom);
+            printf("  \n Prenom : %s",p[j].prenom);
+            printf("  \n Matricule : %ld",p[j].mat);
+            printf("  \n Date de naissance :   ") ;
+            printf("   \n   jour :%d",p[j].jour);
+            printf("   \n   mois :%d",p[j].mois);
+            printf("   \n   annee:%d",p[j].annee);
+            for(i=0;i<p[j].h;i++)
+            {
+                printf("  \n Notes %d : %.2f",i+1,p[i].notes[i]);
+            }
+            printf("\n\n\n");
+            k++;
+        }
+      }
+     if(k==1)
+     printf("\n ce Nom n'est pas disponible ");
+}
+
+ void moyenne1(info p[],int x)
+{int i,k=1;
+char  u[30];
+    printf("\nentrer le Nom :");fflush(stdin);gets(u);
+    for(i=0;i<x;i++)
+      {if(strcmp(p[i].nom,u)==0)
+        {   printf("       \n  %ctudiant c'est: \n",144);
+            printf("  \n Nom    : %s",p[i].nom);
+            printf("  \n Prenom : %s",p[i].prenom);
+            printf("  \n La moyenne g%cn%crale : %.2f",130,130,p[i].moyenne);
+            printf("\n");
+            k++;
+        }
+      }
+    if(k==1)
+      printf("\n ce Nom n'est pas disponible ");
+}
+
+void triparmat(info p[],int x)
+{
+int i,j;
+info c;
+       for(i=0;i<x;i++)
+       {
+           for(j=i+1;j<x;j++)
+           {
+               if(p[j].mat<p[i].mat)
+               {
+                     c=p[i];
+                     p[i]=p[j];
+                     p[j]=c;
+               }
+           }
+       }
+}
+
+void schema(info p[],int j)
+{
+    int i;
+    gotoxy(3,3);printf("%c",218);
+    for(i=0;i<60;i++){gotoxy(4+i,3);printf("%c",196);}
+    gotoxy(3+i,3);printf("%c",191);
+
+    gotoxy(3,4);printf("%c",179);
+    gotoxy(3,5);printf("%c",179);
+    gotoxy(60+3,4);printf("%c",179);
+    gotoxy(60+3,5);printf("%c",179);
+
+    gotoxy(3,6);printf("%c",195);
+    for(i=0;i<60;i++){gotoxy(4+i,6);printf("%c",196);}
+    gotoxy(3+i,6);printf("%c",180);
+
+    gotoxy(3,7);printf("%c",179);
+    gotoxy(3,8);printf("%c",179);
+    gotoxy(60+3,7);printf("%c",179);
+    gotoxy(60+3,8);printf("%c",179);
+    gotoxy(3,9);printf("%c",179);
+    gotoxy(60+3,9);printf("%c",179);
+
+    gotoxy(3,10);printf("%c",195);
+    for(i=0;i<60;i++){gotoxy(4+i,10);printf("%c",196);}
+    gotoxy(3+i,10);printf("%c",180);
+
+    gotoxy(3,11);printf("%c",179);
+    gotoxy(3,12);printf("%c",179);
+    gotoxy(60+3,11);printf("%c",179);
+    gotoxy(60+3,12);printf("%c",179);
+    gotoxy(3,13);printf("%c",179);
+    gotoxy(60+3,13);printf("%c",179);
+    gotoxy(3,14);printf("%c",179);
+    gotoxy(60+3,14);printf("%c",179);
+    gotoxy(3,15);printf("%c",179);
+    gotoxy(60+3,15);printf("%c",179);
+
+    gotoxy(3,16);printf("%c",192);
+    for(i=0;i<60;i++){gotoxy(4+i,16);printf("%c",196);}
+    gotoxy(3+i,16);printf("%c",217);
+
+    gotoxy(3+20,6);printf("%c",194);
+    gotoxy(3+20,7);printf("%c",179);
+    gotoxy(3+20,8);printf("%c",179);
+    gotoxy(3+20,9);printf("%c",179);
+    gotoxy(3+20,10);printf("%c",197);
+    gotoxy(3+20,11);printf("%c",179);
+    gotoxy(3+20,12);printf("%c",179);
+    gotoxy(3+20,13);printf("%c",179);
+    gotoxy(3+20,14);printf("%c",179);
+    gotoxy(3+20,15);printf("%c",179);
+    gotoxy(3+20,16);printf("%c",193);
+
+
+    gotoxy(3+20+20,6);printf("%c",194);
+    gotoxy(3+20+20,7);printf("%c",179);
+    gotoxy(3+20+20,8);printf("%c",179);
+    gotoxy(3+20+20,9);printf("%c",179);
+    gotoxy(3+20+20,10);printf("%c",197);
+    gotoxy(3+20+20,11);printf("%c",179);
+    gotoxy(3+20+20,12);printf("%c",179);
+    gotoxy(3+20+20,13);printf("%c",179);
+    gotoxy(3+20+20,14);printf("%c",179);
+    gotoxy(3+20+20,15);printf("%c",179);
+    gotoxy(3+20+20,16);printf("%c",193);
+
+    gotoxy(23,4);printf("MAJORS DE PROMOTIONS");
+    gotoxy(11,7);printf("Nom");
+    gotoxy(30,7);printf("Prenom");
+    gotoxy(50,7);printf("Moyenne");
+    gotoxy(50,8);printf("generale");
+    gotoxy(11,13);printf("%s",p[j].nom);
+    gotoxy(30,13);printf("%s",p[j].prenom);
+    gotoxy(50,13);printf("%.2f",p[j].moyenne);
+}
+
+ int supprimer1(info p[],int x)
+ {
+  char u[30];
+  int i,j,k=0;
+  printf("\n Entrer le Nom :");fflush(stdin);gets(u);
+    for(i=0;i<x;i++)
+      {
+        if(strcmp(p[i].nom,u)==0)
+        {
+            for(j=i;j<x-1;j++)
+              {
+                 p[j]=p[j+1];
+              }
+              x--;
+              k=1;
+        }
+    }
+    if(k==1)
+       printf("\n  %s est supprimer",u);
+    else
+       printf("\n  %s n'existe pas ",u);
+  return x;
+ }
+
+  int supprimer2(info p[],int x)
+ {
+  int u,j,i,k=0;
+  printf("\n Entrer le MATRICULE :");scanf("%d",&u);
+  for(i=0;i<x;i++)
+    {
+        if(p[i].mat==u)
+        {
+            for(j=i;j<x-1;j++)
+             {
+                p[j]=p[j+1];
+             }
+              x--;
+               k=1;
+        }
+    }
+    if(k==1)
+       printf("\n  %d est supprimer",u);
+    else
+       printf("\n  %d n'existe pas ",u);
+    return x;
+    }
+
+int MENU1(int i)
+{
+int l,ch;
+
+        printf("\n            Gestion Des Etudiants\n\n");
+        printf("\n  << Total des %cl%cves : %d >>",130,138,i);
+        printf("\n\n    %c  1. Saisir un %ctudiant ",219,130);
+        printf("\n    %c  2. Recherche d'un %ctudiant ",219,130);
+        printf("\n    %c  3. Affichage des %ctudiants ",219,130);
+        printf("\n    %c  4. La moyenne g%cn%crale ",219,130,130);
+        printf("\n    %c  5. Majors de promotion ",219);
+        printf("\n    %c  6. Supprimer un %ctudiant ",219,130);
+        printf("\n    %c  7. Trier les %ctudiant ",219,130);
+        printf("\n    %c  8. Quitter",219);
+       l=7;
+       do
+       {
+            switch(ch)
+            {
+                case 72:{if(l>7)l=l-1;}break;
+                case 80:{if(l<14)l=l+1;}break;
+            }
+             gotoxy(8,l);ch=getch();
+       }while(ch!=13);
+
+    return l;
+}
+
+int MENU2(void)
+{
+  int c1;
+        printf(" 1. Par Nom");
+        printf("\n 2. Par Matricule");
+        printf("\n 3. Retour ");
+        gotoxy(12,8);printf("Choix:");
+        do
+        {
+          scanf("%d",&c1);
+            if(c1>8||c1<1)
+            printf("\n        Votre Choix Doit etre Compris entre 1 et 3 :");
+        }while(c1>3||c1<1);
+   return c1;
+}
+
+int MENU3(void)
+{
+  int c1;
+        printf(" 1. Tous Les %ctudiants",144);
+        printf("\n 2. Les %ctudiants Admis",144);
+        printf("\n 3. Retour ");
+        gotoxy(12,8);printf("Choix:");
+        do
+        {
+          scanf("%d",&c1);
+            if(c1>8||c1<1)
+            printf("\n        Votre Choix Doit etre Compris entre 1 et 3 :");
+        }while(c1>3||c1<1);
+   return c1;
+}
+
+int MENU4(void)
+{
+  int c1;
+        printf(" 1. Par Les Notes");
+        printf("\n 2. Par Matricule");
+        printf("\n 3. Retour ");
+        gotoxy(12,8);printf("Choix:");
+        do
+        {
+          scanf("%d",&c1);
+            if(c1>8||c1<1)
+            printf("\n        Votre Choix Doit etre Compris entre 1 et 3 :");
+        }while(c1>3||c1<1);
+   return c1;
+}
+
+void triparnote(info p[],int x)
+{
+int i,j;
+info c;
+       for(i=0;i<x;i++)
+       {
+           for(j=i+1;j<x;j++)
+           {
+               if(p[j].moyenne>p[i].moyenne)
+               {
+                     c=p[i];
+                     p[i]=p[j];
+                     p[j]=c;
+               }
+           }
+       }
+}
+
+#endif // MINI_PROJET_H_INCLUDED
